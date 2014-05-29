@@ -20,9 +20,22 @@
 
 <h1>The <strong>facebook</strong> Friend Machine</h1>
 
-<div class="friends" ng-controller="friendController as friendC">
-  <p>{{test}}</p>
-
+<div class="friends" ng-controller="friendController">
+  <ul ng-repeat='person in friends'>
+    <li class="friend">
+      <img src={{person.pic_square}}></img>
+      <h3>{{person.name}}</h3> 
+      <div class="location">
+        Location: {{person.current_location.city}}, {{person.current_location.state}}, {{person.current_location.country}}
+      </div>      
+      <div class="status">
+        Status: {{person.status.message}} 
+      </div>      
+      <div class="num-friends">
+        Friends: {{person.friend_count}}
+      </div>
+    </li>
+  </ul>
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
 
