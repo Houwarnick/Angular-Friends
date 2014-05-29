@@ -1,4 +1,4 @@
-<html>
+<html ng-app="friendsProject">
 <head>
 <script src='http://code.jquery.com/jquery-1.10.2.js' type='text/javascript'></script>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -20,8 +20,8 @@
 
 <h1>The <strong>facebook</strong> Friend Machine</h1>
 
-<div class="friends">
-
+<div class="friends" ng-controller="friendController as friendC">
+  <p>{{test}}</p>
 
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
