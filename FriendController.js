@@ -1,5 +1,8 @@
 app.controller('friendController',function($scope){
-	
+	$scope.sorter = '';
+	$scope.ascending = false;
+	$scope.searchTermName = '';
+	$scope.searchTermPlace = '';
 	$scope.friends = [{
         "name": "Naishi Zhang",
         "pic_square": "https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-ash3\/t5\/174266_842841_1023237973_q.jpg",

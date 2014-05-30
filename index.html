@@ -21,9 +21,32 @@
 <h1>The <strong>facebook</strong> Friend Machine</h1>
 
 <div class="friends" ng-controller="friendController">
-  <ul ng-repeat='person in friends'>
-    <li class="friend">
-      <img src={{person.pic_square}}></img>
+  <form class="form-inline searchForm" role="form">
+  <div class="form-group">
+
+  <input class="form-control" placeholder="Search Your Friends' Name" ng-model="searchTermName" >
+  <input class="form-control" placeholder="Search Your Friends' Location" ng-model="searchTermPlace" >
+  <!-- The stuff below is For step 5....get rid of the one above if you wish-->
+ <!--    
+    <input class="form-control" placeholder="Search Your Friends' Name" >
+    <input class="form-control" placeholder="Search Your Freinds' Location" > 
+ -->
+    <select class="input-medium" ng-model="sorter">
+        <option value="name">Name</option>
+        <option value="friend_count"># of Friends</option>
+        <option value="current_location.city">City</option>
+        <option value="current_location.state">State</option>
+        <option value="current_location.country">Country</option>
+    </select>
+    <select class="input-medium" ng-model="ascending">
+        <option value="true">Descending</option>
+        <option value="false">Ascending</option>
+    </select>
+  </div>
+  </form>
+  <ul>
+    <li class="friend" ng-repeat='person in friends | orderBy: sorter: ascending | filter:{name: searchTermName, current_location:searchTermPlace} ' >
+      <img class="profile-pic" src={{person.pic_square}}></img>
       <h3>{{person.name}}</h3> 
       <div class="location">
         Location: {{person.current_location.city}}, {{person.current_location.state}}, {{person.current_location.country}}
@@ -33,44 +56,6 @@
       </div>      
       <div class="num-friends">
         Friends: {{person.friend_count}}
-      </div>
-    </li>
-  </ul>
-<form class="form-inline searchForm" role="form">
-  <div class="form-group">
-
-  <input class="form-control" placeholder="Search Anything About Your Friends" >
-  <!-- The stuff below is For step 5....get rid of the one above if you wish-->
-<!--    
-    <input class="form-control" placeholder="Search Your Friends' Name" >
-    <input class="form-control" placeholder="Search Your Freinds' Location" > 
- -->
-    <select class="input-medium">
-        <option>Name</option>
-        <option># friends</option>
-        <option>City</option>
-        <option>State</option>
-        <option>Country</option>
-    </select>
-    <select class="input-medium">
-        <option value="false">Descending</option>
-        <option value="true">Ascending</option>
-    </select>
-  </div>
-</form>
-
-  <ul>
-    <li class='friend'>
-       <img class="profile-pic" src='https://scontent-a.xx.fbcdn.net/hprofile-ash3/833_10200838803828124_1233160321_a.jpg'>
-      <h3>Cali Fornia</h3>
-      <div class="location">
-        Location: New Port Beach, California, United States
-      </div>      
-      <div class="status">
-        Status: I hate the snow. I wish I was on the beach right now!!! <span class="hashtag">#ihateprovo</span>
-      </div>      
-      <div class="num-friends">
-        Friends: 1,367
       </div>
     </li>
   </ul>
